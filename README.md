@@ -6,8 +6,8 @@
 A smart study planning application that uses automated spaced repetition algorithms to systematically transition daily lessons into long-term memory.<br>
 Master subjects effortlessly, manage weekly schedules, and never miss a review session again!
 
-<a href="https://github.com/YOUR_USERNAME/study_smart/releases/tag/v0.0.1"><img alt="Android Release v0.0.1" height="56" src="https://img.shields.io/badge/Release-v0.0.1_Android-blue?style=for-the-badge&logo=android"></a>
-<a href="https://github.com/YOUR_USERNAME/study_smart/stargazers"><img alt="GitHub Stars" height="56" src="https://img.shields.io/github/stars/akeindilkith/study_smart?style=for-the-badge"></a>
+<a href="https://github.com/akeindilkith/study_smart/releases/tag/v0.0.1"><img alt="Android Release v0.0.1" height="56" src="https://img.shields.io/badge/Release-v0.0.1_Android-blue?style=for-the-badge&logo=android"></a>
+<a href="https://github.com/akeindilkith/study_smart/stargazers"><img alt="GitHub Stars" height="56" src="https://img.shields.io/github/stars/akeindilkith/study_smart?style=for-the-badge"></a>
 
 ---
 
