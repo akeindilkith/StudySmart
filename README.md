@@ -17,7 +17,8 @@ Master subjects effortlessly, manage weekly schedules, and never miss a review s
 
 ## 🌃 Features
 
-- 🧠 **Smart Spaced Repetition**: Automatic review scheduling with configurable intervals (e.g., `3, 6, 14, 30` or multiplier syntax like `30*12`).
+- 🧠 **Smart Spaced Repetition**: Automatic review scheduling with configurable interval patterns (e.g., `3, 6, 14, 30` or multiplier syntax like `30*12`).
+- 🔔 **Automatic Reminders**: Local push notifications automatically scheduled for 12:00 AM on every day you have pending study reviews.
 - 📊 **Interactive Dashboard**: Hero overview banner, today's review task slider, subject filter pills, and a quick task creation sheet.
 - ⏳ **Live Exam Countdown**: Real-time countdown timer tracking years, months, days, hours, minutes, and seconds remaining until exams.
 - 📅 **Schedule & Time Planner**: Weekly timetable across Monday to Sunday with customizable time slots.
