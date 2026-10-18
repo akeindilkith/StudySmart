@@ -1,0 +1,9 @@
+-- The C compiler identification is Clang 19.0.1
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: C:/Users/My PC/AppData/Local/Android/Sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/windows-x86_64/bin/clang.exe - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: C:/Users/My PC/AppData/Local/Pub/Cache/hosted/pub.dev/jni-1.1.0/android/.cxx/RelWithDebInfo/6u1f2t73/arm64-v8a

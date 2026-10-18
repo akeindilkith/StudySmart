@@ -1,0 +1,34 @@
+name: study_smart
+description: "Study Smart - An intelligent study planner with spaced repetition built with Flutter"
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  provider: ^6.1.2
+  shared_preferences: ^2.2.3
+  intl: ^0.19.0
+  google_fonts: ^6.2.1
+  table_calendar: ^3.1.2
+  uuid: ^4.4.0
+  flutter_local_notifications: ^17.2.3
+  timezone: ^0.9.4
+  flutter_timezone: ^3.0.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/fonts/
+  fonts:
+    - family: SFProCombo
+      fonts:
+        - asset: assets/fonts/SFPro-sinhala-combo-adcreations.ttf

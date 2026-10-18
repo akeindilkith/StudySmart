@@ -1,0 +1,22 @@
+### The very first & initial release of the Study Smart application.
+
+
+- **Intelligent Study Planner:** 
+
+> Study Smart is a cross-platform mobile application that uses customizable Spaced Repetition algorithms to help students schedule reviews and optimize long-term memory retention.
+
+- **Interactive Dashboard:** 
+
+> The app features a dynamic hero banner, subject filter pills, a horizontal slider for today's review tasks, and a live countdown timer tracking upcoming exams down to the second.
+
+- **Structured Timetable & Todos:** 
+
+> Users can easily organize study routines with a weekly schedule grid and manage daily tasks using an interactive, reorderable drag-and-drop todo list.
+
+- **Visual Progress Tracking:** 
+
+> A monthly history calendar provides instant visual feedback—marking completed sessions with stars and missed ones with flags—allowing students to review or adjust past tasks.
+
+- **Privacy & Offline Support:** 
+
+> Designed with an offline-first architecture, Study Smart keeps all data stored safely on the user's device with built-in options to customize review intervals and export data.
