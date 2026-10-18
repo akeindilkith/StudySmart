@@ -48,11 +48,3 @@ This table lists the available installation method for Study Smart:
   </tr>
 </table>
 
-## 🕳️ Building from source
-
-You can compile Study Smart's source code by following these steps:
-
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/YOUR_USERNAME/study_smart.git
-   cd study_smart
