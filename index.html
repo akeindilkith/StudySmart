@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Smart Blog - Science-Backed Learning</title>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        @font-face {
+            font-family: 'Google Sans';
+            src: url('https://fonts.cdnfonts.com/s/14874/ProductSans-Regular.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Google Sans';
+            src: url('https://fonts.cdnfonts.com/s/14874/ProductSans-Bold.woff') format('woff');
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        body { font-family: 'Google Sans', -apple-system, BlinkMacSystemFont, sans-serif; }
+        .glass { background: rgba(10, 15, 30, 0.7); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.06); }
+        .blue-glow { box-shadow: 0 20px 50px -12px rgba(59, 130, 246, 0.15); }
+        
+        .lang-content { display: none; }
+        .lang-active { display: block; }
+
+        /* Enhanced Floating Animation - Highly Visible Movements */
+        @keyframes dynamicFloat1 {
+            0% { transform: translate(0px, 0px) scale(1); }
+            50% { transform: translate(120px, 80px) scale(1.3); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+        @keyframes dynamicFloat2 {
+            0% { transform: translate(0px, 0px) scale(1.2); }
+            50% { transform: translate(-100px, -90px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1.2); }
+        }
+        .animate-visible-flare-1 { animation: dynamicFloat1 14s infinite ease-in-out; }
+        .animate-visible-flare-2 { animation: dynamicFloat2 16s infinite ease-in-out; }
+    </style>
+</head>
+<body class="bg-[#03060f] text-slate-300 antialiased min-h-screen selection:bg-blue-500 selection:text-white overflow-x-hidden">
+
+    <div class="fixed top-[-5%] left-[-5%] w-[450px] h-[450px] rounded-full bg-gradient-to-br from-blue-600/40 via-sky-500/30 to-transparent blur-[90px] pointer-events-none mix-blend-screen animate-visible-flare-1"></div>
+    <div class="fixed bottom-[-5%] right-[-5%] w-[450px] h-[450px] rounded-full bg-gradient-to-tl from-indigo-600/40 via-blue-500/30 to-transparent blur-[90px] pointer-events-none mix-blend-screen animate-visible-flare-2"></div>
+
+    <div class="max-w-4xl mx-auto px-4 py-12 relative z-10">
+        
+        <header class="text-center mb-12">
+            <span class="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs font-semibold rounded-full uppercase tracking-wider border border-blue-500/15">Official Blog</span>
+            <h1 class="text-4xl md:text-5xl font-bold mt-4 tracking-tight bg-gradient-to-b from-white to-slate-400 bg-clip-text text-transparent">Study Smart App</h1>
+            <p id="tagline-en" class="text-slate-400 mt-3 text-lg lang-content lang-active">Master Your Memory with Science-Backed Smart Reminders</p>
+            <p id="tagline-si" class="text-slate-400 mt-3 text-lg lang-content">විද්‍යාත්මක ස්මාර්ට් රිමයින්ඩර්ස් මගින් ඔබගේ මතකය සුපිරි කරගන්න</p>
+        </header>
+
+        <section class="glass blue-glow rounded-2xl p-6 md:p-8 mb-12 text-center transition-all hover:border-blue-500/30">
+            <h3 class="text-xl font-bold text-white mb-2">Get the Latest Version</h3>
+            <p class="text-slate-400 text-sm mb-6">Download the signed APK directly to your Android device and start studying smarter.</p>
+            <a href="https://studysmartapp.vercel.app/Study.Smart.apk" class="inline-flex items-center gap-2 px-8 py-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl shadow-lg shadow-blue-600/20 transition-all transform hover:-translate-y-0.5">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                Download Study Smart APK (v1.0)
+            </a>
+        </section>
+
+        <section class="mb-12">
+            <h3 class="text-lg font-semibold text-slate-300 mb-6 flex items-center gap-2">
+                <span class="w-2 h-2 bg-blue-500 rounded-full"></span> App Screenshots
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                <div class="glass rounded-xl overflow-hidden aspect-[9/16] bg-slate-900/50 flex items-center justify-center border border-slate-800 relative">
+                    <img src="/screenshots/mobile1.png" alt="Study Smart Screenshot 1" class="w-full h-full object-cover">
+                    <span class="text-xs text-slate-500 absolute bottom-3">Dashboard Interface</span>
+                </div>
+                <div class="glass rounded-xl overflow-hidden aspect-[9/16] bg-slate-900/50 flex items-center justify-center border border-slate-800 relative">
+                    <img src="/screenshots/mobile2.png" alt="Study Smart Screenshot 2" class="w-full h-full object-cover">
+                    <span class="text-xs text-slate-500 absolute bottom-3">Smart Reminders View</span>
+                </div>
+                <div class="glass rounded-xl overflow-hidden aspect-[9/16] bg-slate-900/50 flex items-center justify-center border border-slate-800 relative">
+                    <img src="/screenshots/mobile3.png" alt="Study Smart Screenshot 3" class="w-full h-full object-cover">
+                    <span class="text-xs text-slate-500 absolute bottom-3">Analytics & Settings</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="mt-4 mb-12 flex justify-center">
+            <div class="bg-slate-950 p-1 rounded-xl border border-slate-900 flex gap-1">
+                <button id="btn-en" onclick="switchLanguage('en')" class="px-5 py-2 rounded-lg text-xs font-semibold transition-all bg-slate-900 text-white border border-slate-800">
+                    English
+                </button>
+                <button id="btn-si" onclick="switchLanguage('si')" class="px-5 py-2 rounded-lg text-xs font-semibold transition-all text-slate-500 hover:text-slate-300">
+                    සිංහල
+                </button>
+            </div>
+        </div>
+
+        <hr class="border-slate-900 my-8">
+
+        <article id="content-en" class="lang-content lang-active space-y-12">
+            <div class="space-y-4">
+                <div class="border-l-2 border-blue-500 pl-4">
+                    <h2 class="text-xl font-bold text-white tracking-tight">The Science Behind Study Smart</h2>
+                    <p class="text-[11px] text-slate-500 uppercase tracking-wider mt-0.5">Ebbinghaus Forgetting Curve</p>
+                </div>
+                <p class="text-slate-400 leading-relaxed">
+                    Have you ever spent hours studying for an exam, only to realize you've forgotten most of it a few days later? This is caused by a natural psychological phenomenon known as the <strong>Hermann Ebbinghaus Forgetting Curve</strong>. Research shows that our brains rapidly discard new information, losing up to 80% of it within just 24 hours unless it is actively reviewed.
+                </p>
+            </div>
+
+            <div class="glass rounded-xl p-6 border border-slate-900 bg-slate-950/20 relative">
+                <div class="mb-6">
+                    <h4 class="text-xs font-bold text-slate-300 uppercase tracking-wider">Ebbinghaus Forgetting Curve Model</h4>
+                    <p class="text-[11px] text-slate-500 mt-0.5">Impact of structured active recall intervals on retention level</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 items-center">
+                    
+                    <div class="md:col-span-3 relative h-60 w-full flex items-end border-l border-b border-slate-800/60 bg-[radial-gradient(#1e293b_0.8px,transparent_0.8px)] bg-[size:32px_32px]">
+                        
+                        <div class="absolute left-[-40px] top-0 bottom-0 flex flex-col justify-between text-[9px] font-semibold text-slate-500 py-1 text-right w-7 select-none">
+                            <span>100%</span><span>80%</span><span>60%</span><span>40%</span><span>20%</span><span>0%</span>
+                        </div>
+                        
+                        <svg class="w-full h-full absolute inset-0" viewBox="0 0 100 100" preserveAspectRatio="none">
+                            <line x1="0" y1="25" x2="100" y2="25" stroke="#1e293b" stroke-width="1" stroke-dasharray="4 4"/>
+                            
+                            <path d="M 0 25 C 10 70, 25 90, 100 95" fill="none" stroke="#ef4444" stroke-width="1.5" stroke-opacity="0.4" stroke-dasharray="2 2"/>
+                            <path d="M 0 25 C 10 2, 20 2, 23 10 C 28 45, 45 80, 100 90" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-opacity="0.2"/>
+                            <path d="M 18 25 C 26 2, 34 2, 38 10 C 45 35, 60 70, 100 82" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-opacity="0.4"/>
+                            <path d="M 36 25 C 44 2, 54 2, 58 10 C 66 30, 80 55, 100 65" fill="none" stroke="#38bdf8" stroke-width="2" stroke-opacity="0.65"/>
+                            <path d="M 54 25 C 64 2, 74 2, 78 10 C 85 22, 92 35, 100 42" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round"/>
+                        </svg>
+
+                        <div class="absolute bottom-[-24px] left-0 right-0 flex justify-between text-[10px] text-slate-500 font-medium px-1 select-none">
+                            <span>Class</span><span>10 min</span><span>24 hrs</span><span>1 wk</span><span>1 mo</span>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col justify-between h-52 border-l border-slate-900 pl-4 space-y-3 md:space-y-0 text-[11px] md:h-60 py-1">
+                        <div class="flex flex-col">
+                            <span class="text-blue-500 font-bold">4th Review</span>
+                            <span class="text-slate-400 text-[10px] mt-0.5">Within 1 Month</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-sky-400 font-bold">3rd Review</span>
+                            <span class="text-slate-400 text-[10px] mt-0.5">Within 1 Week</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-slate-400/80 font-bold">2nd Review</span>
+                            <span class="text-slate-500 text-[10px] mt-0.5">Within 24 Hours</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-slate-500 font-bold">1st Review</span>
+                            <span class="text-slate-500 text-[10px] mt-0.5">End of Lesson</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-red-500/60 font-bold">Without Review</span>
+                            <span class="text-slate-600 text-[10px] mt-0.5">(Forgotten Completely)</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <p class="text-slate-400 leading-relaxed">
+                <strong>Study Smart</strong> is developed to completely solve this problem. Inspired by insights on practical, long-term memory retention, the app utilizes an international scientific methodology called <strong>Spaced Repetition</strong>. Instead of cramming blindly, Study Smart automatically calculates the exact psychological thresholds where your brain is about to forget a fact, and pushes a timely notification to remind you to review it. As shown in the graph above, every time you receive a reminder and review, your memory curve spikes straight back up to 100%, flattening the curve over time to unlock flawless permanent retention.
+            </p>
+
+            <div class="glass rounded-xl p-5 space-y-4 text-sm">
+                <h3 class="font-semibold text-blue-400">Installation & System Workflow</h3>
+                <ul class="space-y-3 text-slate-400 list-none pl-0">
+                    <li class="flex gap-3"><span class="text-blue-500 font-bold">01.</span> <span><strong>Enable Unknown Sources:</strong> Since you are installing our standalone signed APK outside of Google Play, allow installation from your browser or file manager when prompted by Android.</span></li>
+                    <li class="flex gap-3"><span class="text-blue-500 font-bold">02.</span> <span><strong>Add Your Tasks/Notes:</strong> Open the app and log in. Input the key academic topics, concepts, or formulas you just learned.</span></li>
+                    <li class="flex gap-3"><span class="text-blue-500 font-bold">03.</span> <span><strong>Receive Technical Reminders:</strong> The app will automatically schedule active recall triggers. When a reminder sounds, don't just clear it—spend 2 minutes mentally recalling that specific topic.</span></li>
+                    <li class="flex gap-3"><span class="text-blue-500 font-bold">04.</span> <span><strong>Lock into Memory:</strong> Repeat the quick reviews at each calculated notification interval to achieve a perfect memory score for your exams.</span></li>
+                </ul>
+            </div>
+        </article>
+
+
+        <article id="content-si" class="lang-content space-y-12">
+            <div class="space-y-4">
+                <div class="border-l-2 border-blue-500 pl-4">
+                    <h2 class="text-xl font-bold text-white tracking-tight">Study Smart පිටුපස ඇති විද්‍යාත්මක රහස</h2>
+                    <p class="text-[11px] text-slate-500 uppercase tracking-wider mt-0.5">Ebbinghaus Forgetting Curve න්‍යාය</p>
+                </div>
+                <p class="text-slate-400 leading-relaxed">
+                    විභාග වලට පැය ගණන් මහන්සි වී පාඩම් කරලා, දින කිහිපයකින් ඒ දේවල් බොහෝමයක් අමතක වී යන ගැටලුවට ඔබත් මුහුණ දී තිබෙනවාද? මනෝවිද්‍යාවේ එන <strong>"Hermann Ebbinghaus Forgetting Curve" (අමතක වීමේ වක්‍රය)</strong> න්‍යායට අනුව, අලුතින් ඉගෙන ගන්නා කරුණු නැවත මතක් නොකළහොත් පැය 24ක් ඇතුළත ඉන් 80%ක්ම අපගේ මොළයට අමතක වී යයි.
+                </p>
+            </div>
+
+            <div class="glass rounded-xl p-6 border border-slate-900 bg-slate-950/20 relative">
+                <div class="mb-6">
+                    <h4 class="text-xs font-bold text-slate-300 uppercase tracking-wider">අමතක වීමේ වක්‍රය සහ මතක සුරැකීමේ ප්‍රස්ථාරය</h4>
+                    <p class="text-[11px] text-slate-500 mt-0.5">ක්‍රමවත් සමාලෝචන කාල පරාසයන් මගින් මතකය රඳවා ගන්නා ආකාරය</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 items-center">
+                    
+                    <div class="md:col-span-3 relative h-60 w-full flex items-end border-l border-b border-slate-800/60 bg-[radial-gradient(#1e293b_0.8px,transparent_0.8px)] bg-[size:32px_32px]">
+                        
+                        <div class="absolute left-[-40px] top-0 bottom-0 flex flex-col justify-between text-[9px] font-semibold text-slate-500 py-1 text-right w-7 select-none">
+                            <span>100%</span><span>80%</span><span>60%</span><span>40%</span><span>20%</span><span>0%</span>
+                        </div>
+                        
+                        <svg class="w-full h-full absolute inset-0" viewBox="0 0 100 100" preserveAspectRatio="none">
+                            <line x1="0" y1="25" x2="100" y2="25" stroke="#1e293b" stroke-width="1" stroke-dasharray="4 4"/>
+                            <path d="M 0 25 C 10 70, 25 90, 100 95" fill="none" stroke="#ef4444" stroke-width="1.5" stroke-opacity="0.4" stroke-dasharray="2 2"/>
+                            <path d="M 0 25 C 10 2, 20 2, 23 10 C 28 45, 45 80, 100 90" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-opacity="0.2"/>
+                            <path d="M 18 25 C 26 2, 34 2, 38 10 C 45 35, 60 70, 100 82" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-opacity="0.4"/>
+                            <path d="M 36 25 C 44 2, 54 2, 58 10 C 66 30, 80 55, 100 65" fill="none" stroke="#38bdf8" stroke-width="2" stroke-opacity="0.65"/>
+                            <path d="M 54 25 C 64 2, 74 2, 78 10 C 85 22, 92 35, 100 42" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round"/>
+                        </svg>
+
+                        <div class="absolute bottom-[-24px] left-0 right-0 flex justify-between text-[10px] text-slate-500 font-medium px-1 select-none">
+                            <span>දේශනය</span><span>විනාඩි 10</span><span>පැය 24</span><span>සතියක්</span><span>මාසයක්</span>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col justify-between h-52 border-l border-slate-900 pl-4 space-y-3 md:space-y-0 text-[11px] md:h-60 py-1">
+                        <div class="flex flex-col">
+                            <span class="text-blue-500 font-bold">4 වන සමාලෝචනය</span>
+                            <span class="text-slate-400 text-[10px] mt-0.5">මාසයක් ඇතුළත</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-sky-400 font-bold">3 වන සමාලෝචනය</span>
+                            <span class="text-slate-400 text-[10px] mt-0.5">සතියක් ඇතුළත</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-slate-400/80 font-bold">2 වන සමාලෝචනය</span>
+                            <span class="text-slate-500 text-[10px] mt-0.5">දිනක් ඇතුළත</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-slate-500 font-bold">මුල් සමාලෝචනය</span>
+                            <span class="text-slate-500 text-[10px] mt-0.5">දේශනය අවසානයේ</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-red-500/60 font-bold">පුනරීක්ෂණයකින් තොරව</span>
+                            <span class="text-slate-600 text-[10px] mt-0.5">(සම්පූර්ණයෙන්ම අමතක වීම)</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <p class="text-slate-400 leading-relaxed">
+                මෙම ගැටලුවට ස්ථිර විද්‍යාත්මක විසඳුමක් ලෙසයි <strong>Study Smart</strong> ඇප් එක නිර්මාණය කර තිබෙන්නේ. ලෝකයේ පිළිගත් ප්‍රායෝගික මතක තබා ගැනීමේ ක්‍රමවේදයක් වන <strong>Spaced Repetition (ප්‍රාන්තර පුනරාවර්තනය)</strong> තාක්ෂණය මෙයට යොදාගෙන ඇත. මෙහිදී ඔබ පාඩම් කරන කරුණු මොළයට අමතක වීමට ඔන්න මෙන්න තිබියදී, ඇප් එක මගින් නිවැරදිම වේලාවට Notification (මතක් කිරීම්) එවා ඔබට එය නැවත මතක් කර දෙයි. ඉහත ප්‍රස්ථාරයෙන් පෙනෙන පරිදි, සෑම මතක් කිරීමකදීම ඔබේ මතක මට්ටම නැවතත් 100% ක් දක්වා ඉහළට තල්ලු කෙරේ. එමගින් ඉතා කෙටි කාලයකින්, කරුණු දීර්ඝකාලීන මතකයට (Long-term memory) ස්ථිරවම ඇතුළත් වේ.
+            </p>
+
+            <div class="glass rounded-xl p-5 space-y-4 text-sm">
+                <h3 class="font-semibold text-blue-400">ඇප් එක භාවිතා කරන ආකාරය සහ උපදෙස්</h3>
+                <ul class="space-y-3 text-slate-400 list-none pl-0">
+                    <li class="flex gap-3"><span class="text-blue-500 font-bold">01.</span> <span><strong>APK එක ඉන්ස්ටෝල් කිරීම:</strong> ඉහත ඇති බටන් එකෙන් APK එක බාගත කර ඉන්ස්ටෝල් කරන්න. (Android දුරකථනයෙන් Unknown Sources ඉල්ලුවහොත් Allow කරන්න).</span></li>
+                    <li class="flex gap-3"><span class="text-blue-500 font-bold">02.</span> <span><strong>පාඩම් කොටස් ඇතුළත් කිරීම:</strong> ඇප් එකට ලොග් වී, ඔබ එදින ඉගෙන ගත් වැදගත් විෂය කරුණු, සූත්‍ර හෝ සටහන් කෙටියෙන් ඇතුළත් කරන්න.</span></li>
+                    <li class="flex gap-3"><span class="text-blue-500 font-bold">03.</span> <span><strong>ලැබෙන රිමයින්ඩර්ස් පිළිපැදීම:</strong> ඇප් එක මගින් විද්‍යාත්මක කාල පරාසයන් අනුව ඔබට රිමයින්ඩර්ස් එවනු ඇත. රිමයින්ඩර් එකක් ආ විට, විනාඩි 2ක් වැය කර එම කරුණ මොළයෙන් මතක් කිරීමට (Active Recall) උත්සාහ කරන්න.</span></li>
+                    <li class="flex gap-3"><span class="text-blue-500 font-bold">04.</span> <span><strong>විභාග ජයග්‍රහණය:</strong> මෙම ක්‍රමයට දිගටම මතක් කිරීම් සිදු කිරීමෙන් වාර විභාග සහ ජාතික විභාග වලදී ඕනෑම අමාරු කරුණක් ක්ෂණිකව මතක් කරගත හැකි වනු ඇත.</span></li>
+                </ul>
+            </div>
+        </article>
+
+        <footer class="mt-24 text-center text-xs text-slate-600 border-t border-slate-950 pt-8">
+            <p>© 2026 AD Creations. Designed for Ultimate Academic Success.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        function switchLanguage(lang) {
+            document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('lang-active'));
+            
+            const btnEn = document.getElementById('btn-en');
+            const btnSi = document.getElementById('btn-si');
+            btnEn.className = "px-5 py-2 rounded-lg text-xs font-semibold transition-all text-slate-500 hover:text-slate-300";
+            btnSi.className = "px-5 py-2 rounded-lg text-xs font-semibold transition-all text-slate-500 hover:text-slate-300";
+
+            if(lang === 'en') {
+                document.getElementById('content-en').classList.add('lang-active');
+                document.getElementById('tagline-en').classList.add('lang-active');
+                btnEn.className = "px-5 py-2 rounded-lg text-xs font-semibold transition-all bg-slate-900 text-white border border-slate-800";
+            } else if(lang === 'si') {
+                document.getElementById('content-si').classList.add('lang-active');
+                document.getElementById('tagline-si').classList.add('lang-active');
+                btnSi.className = "px-5 py-2 rounded-lg text-xs font-semibold transition-all bg-slate-900 text-white border border-slate-800";
+            }
+        }
+    </script>
+
+</body>
+</html>
