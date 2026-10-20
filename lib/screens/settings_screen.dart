@@ -161,31 +161,25 @@ class _SettingsScreenState extends State<SettingsScreen> with SingleTickerProvid
                 ),
                 const SizedBox(height: 20),
                 const Text("Routine Schedule (Time Management)", style: TextStyle(fontWeight: FontWeight.w600, fontSize: 13)),
+                const SizedBox(height: 12),
+                const Text("Waking Time", style: TextStyle(fontWeight: FontWeight.w500, fontSize: 12, color: AppColors.textMuted)),
                 const SizedBox(height: 6),
-                Row(
-                  children: [
-                    Expanded(
-                      child: TextField(
-                        controller: _wakeController,
-                        decoration: const InputDecoration(
-                          labelText: 'Waking Time',
-                          hintText: 'e.g. 05:30',
-                          prefixIcon: Icon(LucideIcons.clock, size: 18),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: TextField(
-                        controller: _sleepController,
-                        decoration: const InputDecoration(
-                          labelText: 'Sleeping Time',
-                          hintText: 'e.g. 22:30',
-                          prefixIcon: Icon(LucideIcons.clock, size: 18),
-                        ),
-                      ),
-                    ),
-                  ],
+                TextField(
+                  controller: _wakeController,
+                  decoration: const InputDecoration(
+                    hintText: 'e.g. 05:30',
+                    prefixIcon: Icon(LucideIcons.clock, size: 18),
+                  ),
+                ),
+                const SizedBox(height: 14),
+                const Text("Sleeping Time", style: TextStyle(fontWeight: FontWeight.w500, fontSize: 12, color: AppColors.textMuted)),
+                const SizedBox(height: 6),
+                TextField(
+                  controller: _sleepController,
+                  decoration: const InputDecoration(
+                    hintText: 'e.g. 22:30',
+                    prefixIcon: Icon(LucideIcons.clock, size: 18),
+                  ),
                 ),
                 const SizedBox(height: 20),
                 const Text("Target Exam Goal", style: TextStyle(fontWeight: FontWeight.w600, fontSize: 13)),
