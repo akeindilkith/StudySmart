@@ -5,6 +5,10 @@
 
 > Study Smart is a cross-platform mobile application that uses customizable Spaced Repetition algorithms to help students schedule reviews and optimize long-term memory retention.
 
+- **Automatic Study Reminders:** 
+
+> Study Smart automatically schedules local push notifications for 12:00 AM on every day you have study reviews due, keeping your review schedule on track without manual setup.
+
 - **Interactive Dashboard:** 
 
 > The app features a dynamic hero banner, subject filter pills, a horizontal slider for today's review tasks, and a live countdown timer tracking upcoming exams down to the second.

@@ -70,6 +70,11 @@ class NotificationService {
 
     if (androidImplementation != null) {
       final bool? result = await androidImplementation.requestNotificationsPermission();
+      try {
+        await androidImplementation.requestExactAlarmsPermission();
+      } catch (e) {
+        debugPrint('Exact alarms permission request exception: $e');
+      }
       granted = result ?? false;
     }
 
@@ -205,34 +210,53 @@ class NotificationService {
     required String body,
     String? payload,
   }) async {
+    const details = NotificationDetails(
+      android: AndroidNotificationDetails(
+        'study_smart_reviews',
+        'Study Review Reminders',
+        channelDescription: 'Automatic 12:00 AM alerts for scheduled study reviews.',
+        importance: Importance.high,
+        priority: Priority.high,
+        icon: '@mipmap/ic_launcher',
+      ),
+      iOS: DarwinNotificationDetails(
+        presentAlert: true,
+        presentBadge: true,
+        presentSound: true,
+      ),
+    );
+
     try {
+      // Try exact scheduling first
       await _notificationsPlugin.zonedSchedule(
         id,
         title,
         body,
         scheduledDate,
-        const NotificationDetails(
-          android: AndroidNotificationDetails(
-            'study_smart_reviews',
-            'Study Review Reminders',
-            channelDescription: 'Automatic 12:00 AM alerts for scheduled study reviews.',
-            importance: Importance.high,
-            priority: Priority.high,
-            icon: '@mipmap/ic_launcher',
-          ),
-          iOS: DarwinNotificationDetails(
-            presentAlert: true,
-            presentBadge: true,
-            presentSound: true,
-          ),
-        ),
+        details,
         androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
         uiLocalNotificationDateInterpretation:
             UILocalNotificationDateInterpretation.absoluteTime,
         payload: payload,
       );
     } catch (e) {
-      debugPrint('Error scheduling 12:00 AM notification (id: $id): $e');
+      debugPrint('Exact alarm failed ($e). Falling back to inexact schedule.');
+      try {
+        // Fallback to inexact scheduling for background/closed reliability
+        await _notificationsPlugin.zonedSchedule(
+          id,
+          title,
+          body,
+          scheduledDate,
+          details,
+          androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
+          uiLocalNotificationDateInterpretation:
+              UILocalNotificationDateInterpretation.absoluteTime,
+          payload: payload,
+        );
+      } catch (fallbackErr) {
+        debugPrint('Inexact schedule fallback error (id: $id): $fallbackErr');
+      }
     }
   }
 
