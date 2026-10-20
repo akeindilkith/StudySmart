@@ -98,7 +98,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Study History Log', style: TextStyle(fontWeight: FontWeight.bold)),
+        title: const Text('Study History', style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800)),
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: false,
@@ -117,7 +117,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                   DateFormat('MMMM yyyy').format(_focusedMonth),
                   style: const TextStyle(
                     fontSize: 20,
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w800,
                     color: AppColors.foreground,
                   ),
                 ),
@@ -395,10 +395,155 @@ class _HistoryScreenState extends State<HistoryScreen> {
                 ],
               ),
             ),
+            const SizedBox(height: 20),
+
+            // Time Management Graphical Chart Card
+            _TimeManagementChartCard(appState: appState),
+
             const SizedBox(height: 160),
           ],
         ),
       ),
+      ),
+    );
+  }
+}
+
+class _TimeManagementChartCard extends StatelessWidget {
+  final AppState appState;
+
+  const _TimeManagementChartCard({required this.appState});
+
+  String _fmtHoursMins(int totalMins) {
+    final h = totalMins ~/ 60;
+    final m = totalMins % 60;
+    if (h > 0) {
+      return '${h}h ${m}m';
+    }
+    return '${m}m';
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final userData = appState.userData;
+    final historyLogs = userData?.timeLogsHistory ?? [];
+    final activeLog = appState.getOrCreateActiveTimeLog();
+
+    int totalStudy = activeLog.totalStudyMinutes;
+    int totalRest = activeLog.totalRestMinutes;
+    int totalWaste = activeLog.totalWasteMinutes;
+
+    for (final log in historyLogs) {
+      totalStudy += log.totalStudyMinutes;
+      totalRest += log.totalRestMinutes;
+      totalWaste += log.totalWasteMinutes;
+    }
+
+    final grandTotal = totalStudy + totalRest + totalWaste;
+    final studyRatio = grandTotal > 0 ? (totalStudy / grandTotal) : 0.0;
+    final restRatio = grandTotal > 0 ? (totalRest / grandTotal) : 0.0;
+    final wasteRatio = grandTotal > 0 ? (totalWaste / grandTotal) : 0.0;
+
+    return Container(
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(color: AppColors.border),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Row(
+            children: [
+              Icon(LucideIcons.clock, size: 20, color: AppColors.primary),
+              SizedBox(width: 8),
+              Text(
+                'Time Management Analytics',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: AppColors.foreground),
+              ),
+            ],
+          ),
+          const SizedBox(height: 16),
+
+          // Segmented Progress Bar
+          ClipRRect(
+            borderRadius: BorderRadius.circular(12),
+            child: SizedBox(
+              height: 16,
+              child: grandTotal == 0
+                  ? Container(color: AppColors.border)
+                  : Row(
+                      children: [
+                        if (studyRatio > 0)
+                          Expanded(
+                            flex: (studyRatio * 100).round(),
+                            child: Container(color: const Color(0xFF10B981)),
+                          ),
+                        if (restRatio > 0)
+                          Expanded(
+                            flex: (restRatio * 100).round(),
+                            child: Container(color: const Color(0xFF7E50FF)),
+                          ),
+                        if (wasteRatio > 0)
+                          Expanded(
+                            flex: (wasteRatio * 100).round(),
+                            child: Container(color: const Color(0xFFEF4444)),
+                          ),
+                      ],
+                    ),
+            ),
+          ),
+          const SizedBox(height: 16),
+
+          // Stat Cards Grid
+          Row(
+            children: [
+              Expanded(
+                child: _buildStatItem('STUDY', _fmtHoursMins(totalStudy), const Color(0xFF10B981)),
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: _buildStatItem('REST', _fmtHoursMins(totalRest), const Color(0xFF7E50FF)),
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: _buildStatItem('WASTE', _fmtHoursMins(totalWaste), const Color(0xFFEF4444)),
+              ),
+            ],
+          ),
+          const SizedBox(height: 16),
+
+          // Total Records Badge
+          Text(
+            'Total Saved Sessions: ${historyLogs.length} day(s)',
+            style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: AppColors.textMuted),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildStatItem(String label, String value, Color color) {
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
+      decoration: BoxDecoration(
+        color: color.withValues(alpha: 0.08),
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: color.withValues(alpha: 0.2)),
+      ),
+      child: Column(
+        children: [
+          Text(
+            label,
+            style: TextStyle(fontSize: 10, fontWeight: FontWeight.w800, color: color),
+          ),
+          const SizedBox(height: 4),
+          Text(
+            value,
+            style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: color),
+          ),
+        ],
       ),
     );
   }

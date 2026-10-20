@@ -7,6 +7,7 @@ import '../models/schedule.dart';
 import '../models/time_slot.dart';
 import '../models/todo.dart';
 import '../models/exam.dart';
+import '../models/time_management_log.dart';
 import '../services/local_storage_service.dart';
 import '../services/spaced_repetition_service.dart';
 import '../services/notification_service.dart';
@@ -439,6 +440,148 @@ class AppState extends ChangeNotifier {
       schedule.timeSlots!.removeWhere((s) => s.id == slotId);
     }
 
+    await _persist();
+  }
+
+  // --- Time Management Methods ---
+  static List<String> generateHourlySlotLabels(String wakeStr, String sleepStr) {
+    int parseMin(String timeStr) {
+      final parts = timeStr.split(':');
+      if (parts.length >= 2) {
+        final h = int.tryParse(parts[0].trim()) ?? 6;
+        final m = int.tryParse(parts[1].trim()) ?? 0;
+        return h * 60 + m;
+      }
+      return 6 * 60;
+    }
+
+    String fmtMin(int totalMins) {
+      final h = (totalMins ~/ 60) % 24;
+      final m = totalMins % 60;
+      final hStr = h.toString().padLeft(2, '0');
+      final mStr = m.toString().padLeft(2, '0');
+      return '$hStr:$mStr';
+    }
+
+    final wakeMins = parseMin(wakeStr);
+    final sleepMins = parseMin(sleepStr);
+
+    if (sleepMins <= wakeMins) return ['06:00 - 22:30'];
+
+    final List<String> labels = [];
+    int current = wakeMins;
+
+    while (current < sleepMins) {
+      int next = (current ~/ 60 + 1) * 60;
+      if (next > sleepMins) {
+        next = sleepMins;
+      }
+      labels.add('${fmtMin(current)} - ${fmtMin(next)}');
+      current = next;
+    }
+
+    return labels;
+  }
+
+  TimeManagementLog getOrCreateActiveTimeLog() {
+    if (_userData == null) {
+      return TimeManagementLog(
+        id: 'active',
+        date: DateTime.now().toIso8601String().split('T').first,
+        wakeTime: '06:00',
+        sleepTime: '22:30',
+        records: [],
+      );
+    }
+
+    final labels = generateHourlySlotLabels(_userData!.wakeTime, _userData!.sleepTime);
+    final dateStr = DateTime.now().toIso8601String().split('T').first;
+
+    if (_userData!.activeTimeLog == null || _userData!.activeTimeLog!.date != dateStr) {
+      final newRecords = labels.map((l) => TimeSlotRecord(slotLabel: l)).toList();
+      _userData!.activeTimeLog = TimeManagementLog(
+        id: 'log-${_uuid.v4()}',
+        date: dateStr,
+        wakeTime: _userData!.wakeTime,
+        sleepTime: _userData!.sleepTime,
+        records: newRecords,
+      );
+    } else {
+      final existingRecords = _userData!.activeTimeLog!.records;
+      final Map<String, TimeSlotRecord> recordMap = {
+        for (var r in existingRecords) r.slotLabel: r
+      };
+      final updatedRecords = labels.map((l) {
+        return recordMap[l] ?? TimeSlotRecord(slotLabel: l);
+      }).toList();
+
+      _userData!.activeTimeLog = TimeManagementLog(
+        id: _userData!.activeTimeLog!.id,
+        date: dateStr,
+        wakeTime: _userData!.wakeTime,
+        sleepTime: _userData!.sleepTime,
+        records: updatedRecords,
+      );
+    }
+
+    return _userData!.activeTimeLog!;
+  }
+
+  Future<void> updateWakeSleepTimes(String wake, String sleep) async {
+    if (_userData == null) return;
+    _userData!.wakeTime = wake;
+    _userData!.sleepTime = sleep;
+    getOrCreateActiveTimeLog();
+    await _persist();
+  }
+
+  Future<void> updateActiveSlotMinutes(String slotLabel, String category, int addedMinutes) async {
+    if (_userData == null) return;
+    final log = getOrCreateActiveTimeLog();
+    final recordIndex = log.records.indexWhere((r) => r.slotLabel == slotLabel);
+    if (recordIndex != -1) {
+      final record = log.records[recordIndex];
+      if (category == 'STUDY') {
+        record.studyMinutes += addedMinutes;
+      } else if (category == 'REST') {
+        record.restMinutes += addedMinutes;
+      } else if (category == 'WASTE') {
+        record.wasteMinutes += addedMinutes;
+      }
+      await _persist();
+    }
+  }
+
+  Future<void> updateActiveSlotReason(String slotLabel, String reason) async {
+    if (_userData == null) return;
+    final log = getOrCreateActiveTimeLog();
+    final recordIndex = log.records.indexWhere((r) => r.slotLabel == slotLabel);
+    if (recordIndex != -1) {
+      log.records[recordIndex].reason = reason;
+      await _persist();
+    }
+  }
+
+  Future<void> saveAndClearTimeLog() async {
+    if (_userData == null) return;
+    final log = getOrCreateActiveTimeLog();
+    if (log.records.isNotEmpty) {
+      _userData!.timeLogsHistory.add(TimeManagementLog(
+        id: 'hist-${_uuid.v4()}',
+        date: log.date,
+        wakeTime: log.wakeTime,
+        sleepTime: log.sleepTime,
+        records: log.records.map((r) => r.copyWith()).toList(),
+      ));
+    }
+    final labels = generateHourlySlotLabels(_userData!.wakeTime, _userData!.sleepTime);
+    _userData!.activeTimeLog = TimeManagementLog(
+      id: 'log-${_uuid.v4()}',
+      date: DateTime.now().toIso8601String().split('T').first,
+      wakeTime: _userData!.wakeTime,
+      sleepTime: _userData!.sleepTime,
+      records: labels.map((l) => TimeSlotRecord(slotLabel: l)).toList(),
+    );
     await _persist();
   }
 

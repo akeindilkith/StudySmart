@@ -19,6 +19,8 @@ class _SettingsScreenState extends State<SettingsScreen> with SingleTickerProvid
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _reminderPatternController = TextEditingController();
   final TextEditingController _examNameController = TextEditingController();
+  final TextEditingController _wakeController = TextEditingController();
+  final TextEditingController _sleepController = TextEditingController();
   DateTime? _selectedExamDate;
   bool _initialized = false;
 
@@ -41,6 +43,8 @@ class _SettingsScreenState extends State<SettingsScreen> with SingleTickerProvid
       if (userData != null) {
         _nameController.text = userData.name;
         _reminderPatternController.text = userData.reminderPattern.join(', ');
+        _wakeController.text = userData.wakeTime;
+        _sleepController.text = userData.sleepTime;
         if (userData.exam != null) {
           _examNameController.text = userData.exam!.name ?? 'Exam';
           _selectedExamDate = DateTime.tryParse(userData.exam!.date);
@@ -56,6 +60,8 @@ class _SettingsScreenState extends State<SettingsScreen> with SingleTickerProvid
     _nameController.dispose();
     _reminderPatternController.dispose();
     _examNameController.dispose();
+    _wakeController.dispose();
+    _sleepController.dispose();
     super.dispose();
   }
 
@@ -63,6 +69,9 @@ class _SettingsScreenState extends State<SettingsScreen> with SingleTickerProvid
     final appState = context.read<AppState>();
     if (_nameController.text.trim().isNotEmpty) {
       appState.updateUserName(_nameController.text.trim());
+    }
+    if (_wakeController.text.trim().isNotEmpty && _sleepController.text.trim().isNotEmpty) {
+      appState.updateWakeSleepTimes(_wakeController.text.trim(), _sleepController.text.trim());
     }
     if (_selectedExamDate != null) {
       appState.updateExam(
@@ -149,6 +158,34 @@ class _SettingsScreenState extends State<SettingsScreen> with SingleTickerProvid
                 TextField(
                   controller: _nameController,
                   decoration: const InputDecoration(hintText: "Your Name"),
+                ),
+                const SizedBox(height: 20),
+                const Text("Routine Schedule (Time Management)", style: TextStyle(fontWeight: FontWeight.w600, fontSize: 13)),
+                const SizedBox(height: 6),
+                Row(
+                  children: [
+                    Expanded(
+                      child: TextField(
+                        controller: _wakeController,
+                        decoration: const InputDecoration(
+                          labelText: 'Waking Time',
+                          hintText: 'e.g. 05:30',
+                          prefixIcon: Icon(LucideIcons.clock, size: 18),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: TextField(
+                        controller: _sleepController,
+                        decoration: const InputDecoration(
+                          labelText: 'Sleeping Time',
+                          hintText: 'e.g. 22:30',
+                          prefixIcon: Icon(LucideIcons.clock, size: 18),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 const SizedBox(height: 20),
                 const Text("Target Exam Goal", style: TextStyle(fontWeight: FontWeight.w600, fontSize: 13)),
@@ -397,7 +434,7 @@ class _SettingsScreenState extends State<SettingsScreen> with SingleTickerProvid
     _syncUserData();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Settings', style: TextStyle(fontWeight: FontWeight.bold)),
+        title: const Text('Settings', style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800)),
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: false,
@@ -415,6 +452,8 @@ class _SettingsScreenState extends State<SettingsScreen> with SingleTickerProvid
               ),
               child: TabBar(
                 controller: _tabController,
+                dividerColor: Colors.transparent,
+                dividerHeight: 0,
                 indicator: BoxDecoration(
                   color: AppColors.primary,
                   borderRadius: BorderRadius.circular(16),

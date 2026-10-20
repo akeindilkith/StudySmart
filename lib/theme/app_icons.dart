@@ -38,4 +38,5 @@ class LucideIcons {
   static const IconData settings = Icons.settings_rounded;
   static const IconData pencil = Icons.edit_rounded;
   static const IconData chevronDown = Icons.keyboard_arrow_down_rounded;
+  static const IconData coffee = Icons.local_cafe_rounded;
 }

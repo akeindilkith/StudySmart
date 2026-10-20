@@ -284,25 +284,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
             // Subject Selector Pills
             const SizedBox(height: 12),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    "Subjects",
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.foreground,
-                    ),
-                  ),
-                  TextButton.icon(
-                    onPressed: () => _showAddTaskSheet(context),
-                    icon: const Icon(LucideIcons.plusCircle, size: 16),
-                    label: const Text('Add Note'),
-                  ),
-                ],
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: Text(
+                "Subjects",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w800,
+                  color: AppColors.foreground,
+                ),
               ),
             ),
             const SizedBox(height: 6),
@@ -353,8 +343,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   Text(
                     DateFormat('MMMM yyyy').format(_currentCalendarMonth),
                     style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w800,
                       color: AppColors.foreground,
                     ),
                   ),

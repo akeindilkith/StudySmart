@@ -105,9 +105,6 @@ class NotificationService {
       return;
     }
 
-    final now = DateTime.now();
-    final todayStr = _formatDateIso(now);
-
     // Collect review tasks per date
     // Key: ISO Date string (YYYY-MM-DD), Value: List of review subjects/notes
     final Map<String, List<String>> pendingReviewsByDate = {};
@@ -170,28 +167,10 @@ class NotificationService {
           ? 'You have 1 study review scheduled today. Tap to open Study Smart!'
           : 'You have $subjectCount study reviews scheduled today. Tap to start reviewing!';
 
-      // If review date is today
-      if (dateStr == todayStr) {
-        // If 12:00 AM has already passed today, show immediate notification if not completed
-        final nowTz = tz.TZDateTime.now(tz.local);
-        if (targetTzDateTime.isBefore(nowTz)) {
-          await _showImmediateNotification(
-            id: notificationId,
-            title: '📚 Study Smart Review Reminder',
-            body: bodyText,
-            payload: dateStr,
-          );
-        } else {
-          await _scheduleNotification(
-            id: notificationId,
-            scheduledDate: targetTzDateTime,
-            title: '📚 Study Smart Review Reminder',
-            body: bodyText,
-            payload: dateStr,
-          );
-        }
-      } else if (targetTzDateTime.isAfter(tz.TZDateTime.now(tz.local))) {
-        // Future review date @ 12:00 AM
+      final nowTz = tz.TZDateTime.now(tz.local);
+
+      // Schedule notification for 12:00 AM if it is in the future
+      if (targetTzDateTime.isAfter(nowTz)) {
         await _scheduleNotification(
           id: notificationId,
           scheduledDate: targetTzDateTime,
@@ -260,7 +239,8 @@ class NotificationService {
     }
   }
 
-  Future<void> _showImmediateNotification({
+  /// Public helper to trigger an immediate notification for testing or alerts.
+  Future<void> showImmediateNotification({
     required int id,
     required String title,
     required String body,

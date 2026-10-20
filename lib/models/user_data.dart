@@ -2,6 +2,7 @@ import 'subject.dart';
 import 'schedule.dart';
 import 'exam.dart';
 import 'todo.dart';
+import 'time_management_log.dart';
 
 class UserData {
   String name;
@@ -10,6 +11,10 @@ class UserData {
   List<Schedule>? schedules;
   Exam? exam;
   List<Todo>? todos;
+  String wakeTime;
+  String sleepTime;
+  TimeManagementLog? activeTimeLog;
+  List<TimeManagementLog> timeLogsHistory;
 
   UserData({
     required this.name,
@@ -18,6 +23,10 @@ class UserData {
     this.schedules,
     this.exam,
     this.todos,
+    this.wakeTime = '06:00',
+    this.sleepTime = '22:30',
+    this.activeTimeLog,
+    this.timeLogsHistory = const [],
   });
 
   factory UserData.initial({String name = 'Student'}) {
@@ -32,6 +41,9 @@ class UserData {
         ),
       ],
       todos: [],
+      wakeTime: '06:00',
+      sleepTime: '22:30',
+      timeLogsHistory: [],
     );
   }
 
@@ -83,6 +95,27 @@ class UserData {
           })
           .whereType<Todo>()
           .toList(),
+      wakeTime: json['wakeTime'] as String? ?? '06:00',
+      sleepTime: json['sleepTime'] as String? ?? '22:30',
+      activeTimeLog: json['activeTimeLog'] != null
+          ? (json['activeTimeLog'] is Map<String, dynamic>
+              ? TimeManagementLog.fromJson(json['activeTimeLog'] as Map<String, dynamic>)
+              : json['activeTimeLog'] is Map
+                  ? TimeManagementLog.fromJson(Map<String, dynamic>.from(json['activeTimeLog'] as Map))
+                  : null)
+          : null,
+      timeLogsHistory: (json['timeLogsHistory'] as List<dynamic>?)
+              ?.map((tl) {
+                if (tl is Map<String, dynamic>) {
+                  return TimeManagementLog.fromJson(tl);
+                } else if (tl is Map) {
+                  return TimeManagementLog.fromJson(Map<String, dynamic>.from(tl));
+                }
+                return null;
+              })
+              .whereType<TimeManagementLog>()
+              .toList() ??
+          [],
     );
   }
 
@@ -95,6 +128,10 @@ class UserData {
         'schedules': schedules!.map((s) => s.toJson()).toList(),
       if (exam != null) 'exam': exam!.toJson(),
       if (todos != null) 'todos': todos!.map((t) => t.toJson()).toList(),
+      'wakeTime': wakeTime,
+      'sleepTime': sleepTime,
+      if (activeTimeLog != null) 'activeTimeLog': activeTimeLog!.toJson(),
+      'timeLogsHistory': timeLogsHistory.map((tl) => tl.toJson()).toList(),
     };
   }
 
@@ -105,6 +142,10 @@ class UserData {
     List<Schedule>? schedules,
     Exam? exam,
     List<Todo>? todos,
+    String? wakeTime,
+    String? sleepTime,
+    TimeManagementLog? activeTimeLog,
+    List<TimeManagementLog>? timeLogsHistory,
   }) {
     return UserData(
       name: name ?? this.name,
@@ -113,6 +154,10 @@ class UserData {
       schedules: schedules ?? this.schedules,
       exam: exam ?? this.exam,
       todos: todos ?? this.todos,
+      wakeTime: wakeTime ?? this.wakeTime,
+      sleepTime: sleepTime ?? this.sleepTime,
+      activeTimeLog: activeTimeLog ?? this.activeTimeLog,
+      timeLogsHistory: timeLogsHistory ?? this.timeLogsHistory,
     );
   }
 }
