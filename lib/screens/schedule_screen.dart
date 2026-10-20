@@ -626,7 +626,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> with TickerProviderStat
                     unselectedLabelColor: AppColors.foreground,
                     indicatorSize: TabBarIndicatorSize.tab,
                     tabs: const [
-                      Tab(text: "Time Mgmt"),
+                      Tab(text: "Time Management"),
                       Tab(text: "Todos"),
                       Tab(text: "Schedule"),
                     ],
