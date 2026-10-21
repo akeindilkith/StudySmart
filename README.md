@@ -26,7 +26,7 @@ Master subjects effortlessly, manage weekly schedules, and never miss a review s
 - 📝 **Reorderable Todo List**: Smooth drag-and-drop task management with instant checkboxes.
 - 📜 **History & Review Tracker**: Full monthly calendar view displaying status badges for completed (⭐️), missed (❌), or mixed (🔵) review days.
 - 🔒 **Privacy First**: 100% offline-first architecture with local data storage and zero telemetry or tracking.
-- 💾 **Data Export & Control**: Safe local data persistence, JSON export, and full reset capabilities.
+
 
 ## 📜 ⬇️ Installation guide
 
