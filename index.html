@@ -2,20 +2,14 @@
 <html lang="en">
 <head>
 
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
 
     <!-- Search Engine Information -->
-      <title>Study Smart Blog - Science-Backed Learning</title>
-      <meta name="description" content="Official blog for StudySmart. Articles on spaced repetition algorithms, exam preparation strategies, and time management.">
-      <link rel="canonical" href="https://studysmart.js.org/">
+    <title>Study Smart Blog - Science-Backed Learning</title>
+    <meta name="description" content="Official blog for StudySmart. Articles on spaced repetition algorithms, exam preparation strategies, and time management.">
+    <link rel="canonical" href="https://studysmart.js.org/">
 
-
-
-
-    
     <link rel="icon" href="website/images/favicon.ico" type="image/x-icon">
     
     <script src="https://cdn.tailwindcss.com"></script>
@@ -61,7 +55,19 @@
     <div class="fixed top-[-5%] left-[-5%] w-[450px] h-[450px] rounded-full bg-gradient-to-br from-blue-600/40 via-sky-500/30 to-transparent blur-[90px] pointer-events-none mix-blend-screen animate-visible-flare-1"></div>
     <div class="fixed bottom-[-5%] right-[-5%] w-[450px] h-[450px] rounded-full bg-gradient-to-tl from-indigo-600/40 via-blue-500/30 to-transparent blur-[90px] pointer-events-none mix-blend-screen animate-visible-flare-2"></div>
 
-    <div class="max-w-4xl mx-auto px-4 py-12 relative z-10">
+    <!-- Top Navigation Bar / Language Toggle at Top Right Corner -->
+    <nav class="relative z-20 max-w-4xl mx-auto px-4 pt-6 flex justify-end items-center">
+        <div class="bg-slate-950/80 backdrop-blur-md p-1 rounded-xl border border-slate-900 flex gap-1 shadow-lg">
+            <button id="btn-en" onclick="switchLanguage('en')" class="px-4 py-1.5 rounded-lg text-xs font-semibold transition-all bg-slate-900 text-white border border-slate-800">
+                English
+            </button>
+            <button id="btn-si" onclick="switchLanguage('si')" class="px-4 py-1.5 rounded-lg text-xs font-semibold transition-all text-slate-500 hover:text-slate-300">
+                සිංහල
+            </button>
+        </div>
+    </nav>
+
+    <div class="max-w-4xl mx-auto px-4 py-8 relative z-10">
         
         <header class="text-center mb-12">
             <span class="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs font-semibold rounded-full uppercase tracking-wider border border-blue-500/15">Official Blog</span>
@@ -73,7 +79,7 @@
         <section class="glass blue-glow rounded-2xl p-6 md:p-8 mb-12 text-center transition-all hover:border-blue-500/30">
             <h3 class="text-xl font-bold text-white mb-2">Get the Latest Version</h3>
             <p class="text-slate-400 text-sm mb-6">Download the signed APK directly to your Android device and start studying smarter.</p>
-            <a href="https://studysmartapp.vercel.app/Study.Smart.apk" class="inline-flex items-center gap-2 px-8 py-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl shadow-lg shadow-blue-600/20 transition-all transform hover:-translate-y-0.5">
+            <a href="https://github.com/akeindilkith/StudySmart/releases/download/v0.0.2/StudySmart-android-all-arch.apk" class="inline-flex items-center gap-2 px-8 py-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl shadow-lg shadow-blue-600/20 transition-all transform hover:-translate-y-0.5">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                 Download Study Smart APK (v0.0.2)
             </a>
@@ -84,31 +90,26 @@
                 <span class="w-2 h-2 bg-blue-500 rounded-full"></span> App Screenshots
             </h3>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                <div class="glass rounded-xl overflow-hidden aspect-[9/19] bg-slate-900/50 flex items-center justify-center border border-slate-800 relative">
-                    <img src="website/images/screenshots/mobile1.png" alt="Study Smart Screenshot 1" class="w-full h-full object-cover">
-                    <span class="text-xs text-slate-500 absolute bottom-3">Dashboard Interface</span>
+                <div class="flex flex-col gap-3">
+                    <div class="glass rounded-xl overflow-hidden aspect-[9/19] bg-slate-900/50 flex items-center justify-center border border-slate-800 relative">
+                        <img src="website/images/screenshots/mobile1.png" alt="Study Smart Screenshot 1" class="w-full h-full object-cover">
+                    </div>
+                    <span class="text-sm font-medium text-slate-300 text-center">Dashboard Interface</span>
                 </div>
-                <div class="glass rounded-xl overflow-hidden aspect-[9/19] bg-slate-900/50 flex items-center justify-center border border-slate-800 relative">
-                    <img src="website/images/screenshots/mobile2.png" alt="Study Smart Screenshot 2" class="w-full h-full object-cover">
-                    <span class="text-xs text-slate-500 absolute bottom-3">Smart Reminders View</span>
+                <div class="flex flex-col gap-3">
+                    <div class="glass rounded-xl overflow-hidden aspect-[9/19] bg-slate-900/50 flex items-center justify-center border border-slate-800 relative">
+                        <img src="website/images/screenshots/mobile3.png" alt="Study Smart Screenshot 2" class="w-full h-full object-cover">
+                    </div>
+                    <span class="text-sm font-medium text-slate-300 text-center">Schedule View</span>
                 </div>
-                <div class="glass rounded-xl overflow-hidden aspect-[9/19] bg-slate-900/50 flex items-center justify-center border border-slate-800 relative">
-                    <img src="website/images/screenshots/mobile3.png" alt="Study Smart Screenshot 3" class="w-full h-full object-cover">
-                    <span class="text-xs text-slate-500 absolute bottom-3">Analytics & Settings</span>
+                <div class="flex flex-col gap-3">
+                    <div class="glass rounded-xl overflow-hidden aspect-[9/19] bg-slate-900/50 flex items-center justify-center border border-slate-800 relative">
+                        <img src="website/images/screenshots/mobile2.png" alt="Study Smart Screenshot 3" class="w-full h-full object-cover">
+                    </div>
+                    <span class="text-sm font-medium text-slate-300 text-center">Analytics</span>
                 </div>
             </div>
         </section>
-
-        <div class="mt-4 mb-12 flex justify-center">
-            <div class="bg-slate-950 p-1 rounded-xl border border-slate-900 flex gap-1">
-                <button id="btn-en" onclick="switchLanguage('en')" class="px-5 py-2 rounded-lg text-xs font-semibold transition-all bg-slate-900 text-white border border-slate-800">
-                    English
-                </button>
-                <button id="btn-si" onclick="switchLanguage('si')" class="px-5 py-2 rounded-lg text-xs font-semibold transition-all text-slate-500 hover:text-slate-300">
-                    සිංහල
-                </button>
-            </div>
-        </div>
 
         <hr class="border-slate-900 my-8">
 
@@ -123,13 +124,13 @@
                 </p>
             </div>
 
-            <div class="glass rounded-xl p-6 border border-slate-900 bg-slate-950/20 relative">
+            <div class="glass rounded-xl p-6 pb-10 border border-slate-900 bg-slate-950/20 relative">
                 <div class="mb-6">
                     <h4 class="text-xs font-bold text-slate-300 uppercase tracking-wider">Ebbinghaus Forgetting Curve Model</h4>
                     <p class="text-[11px] text-slate-500 mt-0.5">Impact of structured active recall intervals on retention level</p>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 items-center">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 gap-y-10 items-center pl-8 md:pl-10">
                     
                     <div class="md:col-span-3 relative h-60 w-full flex items-end border-l border-b border-slate-800/60 bg-[radial-gradient(#1e293b_0.8px,transparent_0.8px)] bg-[size:32px_32px]">
                         
@@ -148,7 +149,7 @@
                         </svg>
 
                         <div class="absolute bottom-[-24px] left-0 right-0 flex justify-between text-[10px] text-slate-500 font-medium px-1 select-none">
-                            <span>Class</span><span>10 min</span><span>24 hrs</span><span>1 wk</span><span>1 mo</span>
+                            <span>Class</span><span>10 min</span><span>24 hrs</span><span>1 wk</span><span>1 mo</span><span>2 mo</span>
                         </div>
                     </div>
 
@@ -205,13 +206,13 @@
                 </p>
             </div>
 
-            <div class="glass rounded-xl p-6 border border-slate-900 bg-slate-950/20 relative">
+            <div class="glass rounded-xl p-6 pb-10 border border-slate-900 bg-slate-950/20 relative">
                 <div class="mb-6">
                     <h4 class="text-xs font-bold text-slate-300 uppercase tracking-wider">අමතක වීමේ වක්‍රය සහ මතක සුරැකීමේ ප්‍රස්ථාරය</h4>
                     <p class="text-[11px] text-slate-500 mt-0.5">ක්‍රමවත් සමාලෝචන කාල පරාසයන් මගින් මතකය රඳවා ගන්නා ආකාරය</p>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 items-center">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 gap-y-10 items-center pl-8 md:pl-10">
                     
                     <div class="md:col-span-3 relative h-60 w-full flex items-end border-l border-b border-slate-800/60 bg-[radial-gradient(#1e293b_0.8px,transparent_0.8px)] bg-[size:32px_32px]">
                         
@@ -229,7 +230,7 @@
                         </svg>
 
                         <div class="absolute bottom-[-24px] left-0 right-0 flex justify-between text-[10px] text-slate-500 font-medium px-1 select-none">
-                            <span>දේශනය</span><span>විනාඩි 10</span><span>පැය 24</span><span>සතියක්</span><span>මාසයක්</span>
+                            <span>දේශනය</span><span>විනාඩි 10</span><span>පැය 24</span><span>සතියක්</span><span>මාසයක්</span><span>මාස දෙකක්</span>
                         </div>
                     </div>
 
@@ -286,17 +287,17 @@
             
             const btnEn = document.getElementById('btn-en');
             const btnSi = document.getElementById('btn-si');
-            btnEn.className = "px-5 py-2 rounded-lg text-xs font-semibold transition-all text-slate-500 hover:text-slate-300";
-            btnSi.className = "px-5 py-2 rounded-lg text-xs font-semibold transition-all text-slate-500 hover:text-slate-300";
+            btnEn.className = "px-4 py-1.5 rounded-lg text-xs font-semibold transition-all text-slate-500 hover:text-slate-300";
+            btnSi.className = "px-4 py-1.5 rounded-lg text-xs font-semibold transition-all text-slate-500 hover:text-slate-300";
 
             if(lang === 'en') {
                 document.getElementById('content-en').classList.add('lang-active');
                 document.getElementById('tagline-en').classList.add('lang-active');
-                btnEn.className = "px-5 py-2 rounded-lg text-xs font-semibold transition-all bg-slate-900 text-white border border-slate-800";
+                btnEn.className = "px-4 py-1.5 rounded-lg text-xs font-semibold transition-all bg-slate-900 text-white border border-slate-800";
             } else if(lang === 'si') {
                 document.getElementById('content-si').classList.add('lang-active');
                 document.getElementById('tagline-si').classList.add('lang-active');
-                btnSi.className = "px-5 py-2 rounded-lg text-xs font-semibold transition-all bg-slate-900 text-white border border-slate-800";
+                btnSi.className = "px-4 py-1.5 rounded-lg text-xs font-semibold transition-all bg-slate-900 text-white border border-slate-800";
             }
         }
     </script>
