@@ -40,7 +40,7 @@ This table lists the available installation method for Study Smart:
   <tr>
     <td>Android (v0.0.2)</td>
     <td>
-      <a href="https://github.com/akeindilkith/Study_Smart/releases/download/v0.0.2/StudySmart-android-all-arch.apk">
+      <a href="https://github.com/akeindilkith/StudySmart/releases/download/v0.0.2/StudySmart-android-all-arch.apk">
         <img width="220" alt="APK Download v0.0.2" src="https://user-images.githubusercontent.com/114044633/223920025-83687de0-e463-4c5d-8122-e06e4bb7d40c.png">
       </a>
       <br/>
