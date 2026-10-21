@@ -11,9 +11,9 @@ Master subjects effortlessly, manage weekly schedules, and never miss a review s
 
 ---
 
- <img width="300" src="website/images/screenshots/mobile1.png" alt="Study Smart Mobile">
- <img width="300" src="website/images/screenshots/mobile3.png" alt="Study Smart Mobile">
- <img width="300" src="website/images/screenshots/mobile2.png" alt="Study Smart Mobile">
+ <img width="260" src="website/images/screenshots/mobile1.png" alt="Study Smart Mobile">
+ <img width="260" src="website/images/screenshots/mobile3.png" alt="Study Smart Mobile">
+ <img width="260" src="website/images/screenshots/mobile2.png" alt="Study Smart Mobile">
 
 </div>
 
